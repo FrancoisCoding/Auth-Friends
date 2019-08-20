@@ -8,7 +8,6 @@ import Friends from "./components/Friends/Friends";
 function App() {
   return (
     <div className="App">
-      <LoginForm />
       <Switch>
         <Route exact path="/" component={LoginForm} />
         <PrivateRoute path="/protected" component={Friends} />
