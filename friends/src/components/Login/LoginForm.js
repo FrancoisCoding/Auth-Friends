@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import { ButtonContainer } from "../styled-components/Button";
+import axios from "axios";
 
 const LoginForm = props => {
   const [name, setName] = useState({
@@ -18,12 +19,13 @@ const LoginForm = props => {
 
   const login = e => {
     e.preventDefault();
-    props.login(name.username, name.password).then(res => {
-      if (res) {
-        props.history.push("/protected");
-      }
-      props.setIsModalVisible(false);
-    });
+    axios
+      .post("http://localhost:5000/api/login", name)
+      .then(res => {
+        localStorage.setItem("token", res.data.payload);
+      })
+      .catch(err => console.log(err.response));
+    props.history.push("/protected");
   };
 
   return (
