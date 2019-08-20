@@ -1,10 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./App.css";
+import { Route, Switch } from "react-router-dom";
+import LoginForm from "./components/Login/LoginForm";
 
 function App() {
   return (
     <div className="App">
-      <h1>App</h1>
+      <LoginForm />
     </div>
   );
 }
